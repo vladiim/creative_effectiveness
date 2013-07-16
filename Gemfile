@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '2.0.0'
+
 gem 'debugger',   '~> 1.6.1'
 gem 'rake',       '~> 10.1.0'
 gem 'mechanize',  '~> 2.7.1'

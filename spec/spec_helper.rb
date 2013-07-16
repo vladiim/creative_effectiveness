@@ -1,1 +1,2 @@
 require 'ostruct'
+require 'fakeweb'
