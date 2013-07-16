@@ -11,4 +11,8 @@ class TextProcessor
   def extract_details
     
   end
+
+  # note finding the 1st entry after Grand Prix:
+  # s = text
+  # (/Grand Prix\n\n(.+)/.match(s))[0].gsub(/\302\240/, ' ').gsub(/Grand Prix\n\n/, '')
 end

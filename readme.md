@@ -8,6 +8,7 @@ URL format: <code>http://www.canneslions.com/resources/downloads/winners_pdfs/Ca
 
 <code>
   winner_data = WinnerData.new
+
   winner_data.get_data
 </code>
 
@@ -15,6 +16,7 @@ URL format: <code>http://www.canneslions.com/resources/downloads/winners_pdfs/Ca
 
 <code>
   text_processor = TextProcessor.new(winner_data)
+
   text_processor.extract_details
 </code>
 
@@ -22,5 +24,6 @@ URL format: <code>http://www.canneslions.com/resources/downloads/winners_pdfs/Ca
 
 <code>
   csv_exportor = CsvExporter.new(text_processor)
+
   csv_exportor.save
 </code>
