@@ -28,8 +28,11 @@ module Entry
     end
 
     def find_award
-      entry_content.search('.heading_prize')[0]
-                   .children.text.match(/\w.*/)[0].downcase.gsub(/\r+?/, '')
+      begin; entry_content.search('.heading_prize')[0]
+                          .children.text.match(/\w.*/)[0].downcase.gsub(/\r+?/, '')
+      rescue NoMethodError
+        'entry'
+      end
     end
 
     def find_element(type)

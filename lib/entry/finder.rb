@@ -1,4 +1,5 @@
 require 'mechanize'
+require 'ostruct'
 
 module Entry
   class Finder
@@ -12,10 +13,11 @@ module Entry
       @year = 2013
     end
 
-    attr_accessor :page
+    attr_accessor :page, :category
     def all_urls
       categories.inject(urls) do |urls, category|
-        @page = entries_page(category)
+        @category = category
+        @page     = entries_page
         scrape_category_urls
         urls
       end
@@ -23,7 +25,7 @@ module Entry
 
     private
 
-    def entries_page(category)
+    def entries_page
       agent.get(URL + "/work/#{year}/#{category}" + ENTRIES_INDEX_SUFFIX)
     end
 
@@ -48,29 +50,14 @@ module Entry
       end
     end
 
-    # def scrape_next_page
-    #   click_next_page
-    #   scrape_category_urls
-    # end
-
     def find_url(tr)
-      tr.search('a')[0].attributes['href'].value
+      entry = tr.search('a')[0].attributes['href'].value
+      "work/#{year}/#{category}/#{entry}"
     end
 
-    # def more_entries
-    #   ">>>" == next_entries_page_link.children.text
-    # end
-
-    # def click_next_page
-    #   Mechanize::Page::Link.new(next_entries_page_link, agent, page).click
-    # end
-
-    # def next_entries_page_link
-    #   page.search('.entry_list_paging').last.children[-2]
-    # end
-
-    # def categories
-    #   CATEGORIES
-    # end
+    def categories
+      # CATEGORIES
+      ['design']
+    end
   end
 end

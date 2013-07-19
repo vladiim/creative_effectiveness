@@ -16,7 +16,8 @@ describe Entry::Finder do
     end
 
     it 'lists all the urls' do
-      result.should eq ['URL_PAGE_1', 'URL_PAGE_2']
+      links = ['work/2013/design/URL_PAGE_1', 'work/2013/design/URL_PAGE_2']
+      result.should eq links
     end    
   end
 end
