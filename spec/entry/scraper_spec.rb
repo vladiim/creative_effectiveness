@@ -1,8 +1,10 @@
 require 'spec_helper'
-require_relative '../lib/scraper'
+require_relative '../lib/entry/scraper'
 
-describe Scraper do
-  let(:scraper)   { Scraper.new }
+module Entry; end
+
+describe Entry::Scraper do
+  let(:scraper)   { Entry::Scraper.new }
   let(:entry_url) { 'http://www.canneslions.com/work/2013/branded/' }
 
   before do
@@ -10,7 +12,7 @@ describe Scraper do
     FakeWeb.register_uri(:get, entry_url, body: entry_content, content_type: 'text/html')
   end
 
-  describe '.get_entry' do
+  describe '#get_entry' do
     before { scraper.get_entry(entry_url) }
 
     it 'adds the entry to entries' do
